@@ -44,7 +44,7 @@ Repositório para armazenar todos os trabalhos da disciplina de tópicos especia
 <a href="https://github.com/fernandaistefane" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 20px; width: 100%;">
 <img src="https://github.com/fernandaistefane.png" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #e0e0e0;"/>
 <div>
-<h3 style="margin: 0 0 5px 0; color: #333;">Fernanda Istéfene/h3>
+<h3 style="margin: 0 0 5px 0; color: #333;">Fernanda Istéfene</h3>
 </div>
 </a>
 </div>
