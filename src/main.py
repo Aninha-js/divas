@@ -4,7 +4,7 @@ from modules.metrics.reg.rmse import rmse
 
 
 def main():
-    source = "data/spotify_songs.csv"
+    source = "data/best_selling_switch_games.csv"
     data = fetch_data(source)
     model = LR()
     model.train(data[0], data[1])
