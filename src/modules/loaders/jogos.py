@@ -1,18 +1,25 @@
 import numpy as np
 import pandas as pd
+from typing import Tuple
 
+def fetch_data(source: str) -> Tuple[np.ndarray, np.ndarray]:
 
-def fetch_data(source: str) -> tuple[np.ndarray, np.ndarray]:
-    """
-    Fetch data from the given source.
+    # Lê o CSV
+    df = pd.read_csv(source)
 
-    Args:
-        source (str): The data source URL or file path.
+    # Extrai o ano da data de lançamento
+    df["release_year"] = pd.to_datetime(df["release_date"], errors="coerce").dt.year
 
-    Returns:
-        np.ndarray: An array of data records.
-    """
-    df = pd.read_csv(source).to_numpy()
-    X = df[:, :-1]
-    y = df[:, -1]
+    # Seleciona colunas relevantes
+    df = df[["genre", "developer", "publisher", "release_year", "copies_sold"]]
+
+    # One-Hot Encoding nas colunas de texto
+    df = pd.get_dummies(df, columns=["genre", "developer", "publisher"], drop_first=True)
+
+    # X = todas menos a última (features)
+    X = df.drop(columns=["copies_sold"]).values
+
+    # y = última (target)
+    y = df["copies_sold"].values
+
     return X, y

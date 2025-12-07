@@ -5,16 +5,27 @@ from modules.metrics.reg.rmse import rmse
 
 def main():
     source = "data/best_selling_switch_games.csv"
-    data = fetch_data(source)
+
+    # Carrega dados
+    X, y = fetch_data(source)
+
+    # Cria modelo
     model = LR()
-    model.train(data[0], data[1])
-    print("Score:", model.get_score(data[0], data[1]))
-    print("Predictions:", model.predict(data[0]))
+
+    # Treina
+    model.train(X, y)
+
+    # Resultados
+    print("Score:", model.get_score(X, y))
     print("Intercept:", model.get_intercept())
     print("Coefficients:", model.get_coefficients())
-    y_pred = model.predict(data[0])
-    print("predict values:", y_pred)
-    print("RMSE:", rmse(data[1], y_pred))
+
+    # Predição
+    y_pred = model.predict(X)
+    print("Predicted values:", y_pred)
+
+    # RMSE
+    print("RMSE:", rmse(y, y_pred))
 
 
 if __name__ == "__main__":
